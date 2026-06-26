@@ -1,0 +1,38 @@
+{
+  "name": "browser-mcp-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "MCP App that drives a real browser with Playwright and shows a live, clickable view inside the host.",
+  "main": "dist/server.js",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "cross-env INPUT=mcp-app.html vite build",
+    "watch": "cross-env INPUT=mcp-app.html NODE_ENV=development vite build --watch",
+    "serve": "tsx main.ts",
+    "serve:stdio": "tsx main.ts --stdio",
+    "dev": "cross-env NODE_ENV=development concurrently -n ui,server -c cyan,magenta \"npm run watch\" \"tsx --watch main.ts\"",
+    "start": "npm run build && npm run serve",
+    "start:stdio": "npm run build 1>&2 && npm run serve:stdio",
+    "browsers": "playwright install chromium"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/ext-apps": "^1.7.4",
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "playwright": "^1.61.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.0.0",
+    "concurrently": "^10.0.3",
+    "cross-env": "^10.1.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "vite": "^8.1.0",
+    "vite-plugin-singlefile": "^2.3.3"
+  }
+}

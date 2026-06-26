@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Live Browser</title>
+  </head>
+  <body>
+    <main class="app">
+      <div class="toolbar">
+        <div class="nav">
+          <button id="back" title="Back" aria-label="Back">‹</button>
+          <button id="forward" title="Forward" aria-label="Forward">›</button>
+          <button id="reload" title="Reload" aria-label="Reload">⟳</button>
+        </div>
+        <form id="address" class="address">
+          <input
+            id="url"
+            type="text"
+            inputmode="url"
+            spellcheck="false"
+            autocomplete="off"
+            placeholder="Enter a URL or search…"
+          />
+          <button id="go" type="submit">Go</button>
+        </form>
+        <div class="nav">
+          <button id="live-toggle" class="live" title="Pause / resume live view">‖</button>
+          <button id="fullscreen" title="Toggle fullscreen" aria-label="Fullscreen">⤢</button>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div id="viewport" class="viewport" tabindex="0" aria-label="Live page. Click to interact, then type.">
+          <img id="screen" alt="Live page view" draggable="false" />
+          <div id="placeholder" class="placeholder">Loading the browser…</div>
+        </div>
+      </div>
+
+      <div class="dock">
+        <div class="status">
+          <span id="dot" class="dot"></span>
+          <span id="status-text">Connecting…</span>
+        </div>
+        <form id="type-form" class="type-row">
+          <input id="type-text" type="text" placeholder="Type into the focused field…" autocomplete="off" />
+          <label class="enter"><input id="submit" type="checkbox" /> Enter</label>
+          <button id="type-send" type="submit">Type</button>
+        </form>
+      </div>
+
+      <p class="hint">
+        Click anywhere on the page to click there, then just type — keystrokes (incl. Tab &amp; Enter) go to the page.
+      </p>
+    </main>
+    <script type="module" src="/src/mcp-app.ts"></script>
+  </body>
+</html>
